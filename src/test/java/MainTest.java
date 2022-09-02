@@ -47,4 +47,35 @@ public class MainTest {
         assertFalse(actual);
 
     }
+
+    @Test
+    void password_checkdigitTest_uppercase() {
+        //given
+        String password = "haLlo";
+        //when
+        int actual = Main.password_checkdigitTest(password);
+        //then
+        assertEquals(1,actual);
+
+    }@Test
+    void password_checkdigitTest_lowercase() {
+        //given
+        String password = "hallo";
+        //when
+        int actual = Main.password_checkdigitTest(password);
+        //then
+        assertEquals(-1,actual);
+
+    }
+    @Test
+    void password_checkdigitTest_nodigit() {
+        //given
+        String password = "1234567";
+        //when
+        int actual = Main.password_checkdigitTest(password);
+        //then
+        assertEquals(0,actual);
+
+    }
+
 }
