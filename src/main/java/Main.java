@@ -1,8 +1,17 @@
-
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
- //TODO
+ //TODO: error print, Scan in same line
+
+        String password = input();
+
+        print(
+                password_length(password),
+                password_number(password),
+                password_checkdigit(password),
+                !password_badword(password)
+        );
 
     }
 
@@ -55,5 +64,19 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public static void print (boolean length, boolean hasnumber, boolean cases, boolean badwod) {
+        if (length && hasnumber && cases && badwod) {
+            System.out.println("Good password!!!");
+        }
+        else {
+            System.out.println("not so good...");
+        }
+    }
+    public static String input() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Whats your password: ");
+        return scan.nextLine();
     }
 }
