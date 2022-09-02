@@ -2,6 +2,7 @@
 
 public class Main {
     public static void main(String[] args) {
+ //TODO
 
     }
 
@@ -21,7 +22,7 @@ public class Main {
         }
         return false;
     }
-    public static boolean password_checkdigitTest(String pass) {
+    public static boolean password_checkdigit(String pass) {
         boolean uppercase = false;
         boolean lowercase = false;
 
@@ -40,5 +41,19 @@ public class Main {
             else {
                 return false;
             }
+    }
+    public static boolean password_badword(String pass) {
+        //list of bad passwords
+        String[] badword = {
+                "12345678",
+                "Hallo123"
+        };
+        //code
+        for (int i = 0; i < badword.length; i++) {
+            if(pass.equals(badword[i])) {
+                return true;
+            }
+        }
+        return false;
     }
 }

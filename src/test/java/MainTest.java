@@ -53,7 +53,7 @@ public class MainTest {
         //given
         String password = "haLlo";
         //when
-        boolean actual = Main.password_checkdigitTest(password);
+        boolean actual = Main.password_checkdigit(password);
         //then
         assertTrue(actual);
 
@@ -62,7 +62,7 @@ public class MainTest {
         //given
         String password = "hallo";
         //when
-        boolean actual = Main.password_checkdigitTest(password);
+        boolean actual = Main.password_checkdigit(password);
         //then
         assertFalse(actual);
 
@@ -72,10 +72,28 @@ public class MainTest {
         //given
         String password = "{}0977}";
         //when
-        boolean actual = Main.password_checkdigitTest(password);
+        boolean actual = Main.password_checkdigit(password);
         //then
         assertFalse(actual);
 
     }
+    @Test
+    void password_badwordTest_true() {
+        //given
+        String password = "12345678";
+        //when
+        boolean actual = Main.password_badword(password);
+        //then
+        assertTrue(actual);
 
+    }
+    @Test
+    void password_badwordTest_false() {
+        //given
+        String password = "1234fg";
+        //when
+        boolean actual = Main.password_badword(password);
+        //then
+        assertFalse(actual);
+    }
 }
