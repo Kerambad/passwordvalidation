@@ -8,22 +8,27 @@ public class Main {
     }
 
     public static boolean password_length(String pass) {
-        if(pass.length() >= 8) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return pass.length() >= 8;
     }
-    public static boolean password_number(String pass) {
+
+    //TODO: more efficent with for 1-9 or for password.length?
+ /*   public static boolean password_number(String pass) {
         for (int i = 0; i <= 9; i++) {
             if (pass.contains(String.valueOf(i))) {
                 return true;
             }
         }
         return false;
+    }*/
+    public static boolean password_number(String pass) {
+        for (int i = 0; i < pass.length(); i++) {
+            if (Character.isDigit(pass.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
-    public static boolean password_checkdigit(String pass) {
+    public static boolean password_checknumber(String pass) {
         boolean uppercase = false;
         boolean lowercase = false;
 
@@ -51,7 +56,7 @@ public class Main {
         };
         //code
         for (int i = 0; i < badword.length; i++) {
-            if(pass.equals(badword[i])) {
+            if(pass.equalsIgnoreCase(badword[i])) {
                 return true;
             }
         }
@@ -73,7 +78,7 @@ public class Main {
             System.out.println("Password need's at least one number.");
             error = true;
         }
-        if (!password_checkdigit(pass)) {
+        if (!password_checknumber(pass)) {
             System.out.println("Passwords need's at least one uppercase/lowercase char.");
             error = true;
         }
