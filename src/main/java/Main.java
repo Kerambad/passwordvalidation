@@ -2,17 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
- //TODO: error print, Scan in same line
-
         String password = input();
-
-        print(
-                password_length(password),
-                password_number(password),
-                password_checkdigit(password),
-                !password_badword(password)
-        );
-
+        boolean rating = check_password(password);
+        print(rating);
     }
 
     public static boolean password_length(String pass) {
@@ -66,17 +58,42 @@ public class Main {
         return false;
     }
 
-    public static void print (boolean length, boolean hasnumber, boolean cases, boolean badwod) {
-        if (length && hasnumber && cases && badwod) {
-            System.out.println("Good password!!!");
-        }
-        else {
-            System.out.println("not so good...");
-        }
-    }
     public static String input() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Whats your password: ");
+        System.out.print("Whats your password: ");
         return scan.nextLine();
+    }
+    public static boolean check_password(String pass) {
+        boolean error = false;
+        if (!password_length(pass)){
+            System.out.println("Password need's at least 8 chars.");
+            error = true;
+        }
+        if (!password_number(pass)) {
+            System.out.println("Password need's at least one number.");
+            error = true;
+        }
+        if (!password_checkdigit(pass)) {
+            System.out.println("Passwords need's at least one uppercase/lowercase char.");
+            error = true;
+        }
+        if (password_badword(pass)) {
+            System.out.println("Passwort easy to guess, please choose another.");
+            error = true;
+        }
+        if(error){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    public static void print (boolean goodpw) {
+        if (goodpw) {
+            System.out.println("password valid.");
+        }
+        else {
+            System.out.println("--> Invalid password, please retry.");
+        }
     }
 }
