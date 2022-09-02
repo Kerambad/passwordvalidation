@@ -49,32 +49,32 @@ public class MainTest {
     }
 
     @Test
-    void password_checkdigitTest_uppercase() {
+    void password_checkdigitTest_true() {
         //given
         String password = "haLlo";
         //when
-        int actual = Main.password_checkdigitTest(password);
+        boolean actual = Main.password_checkdigitTest(password);
         //then
-        assertEquals(1,actual);
+        assertTrue(actual);
 
     }@Test
-    void password_checkdigitTest_lowercase() {
+    void password_checkdigitTest_false() {
         //given
         String password = "hallo";
         //when
-        int actual = Main.password_checkdigitTest(password);
+        boolean actual = Main.password_checkdigitTest(password);
         //then
-        assertEquals(-1,actual);
+        assertFalse(actual);
 
     }
     @Test
     void password_checkdigitTest_nodigit() {
         //given
-        String password = "1234567";
+        String password = "{}0977}";
         //when
-        int actual = Main.password_checkdigitTest(password);
+        boolean actual = Main.password_checkdigitTest(password);
         //then
-        assertEquals(0,actual);
+        assertFalse(actual);
 
     }
 
